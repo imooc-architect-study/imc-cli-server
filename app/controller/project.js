@@ -2,10 +2,13 @@
 
 const { Controller } = require('egg');
 
+const ProjectModel = require('../models/project.js');
+
 class ProjectController extends Controller {
-  getTemplate() {
+  async getTemplate() {
     const { ctx } = this;
-    ctx.body = 'get template';
+    const result = await ProjectModel.find();
+    ctx.body = result;
   }
 }
 
