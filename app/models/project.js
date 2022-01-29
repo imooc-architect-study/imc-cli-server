@@ -18,6 +18,18 @@ const project = new Schema({
     type: String,
     required: true,
   },
+  // 模板类型，normal:标准，custom:自定义
+  type: {
+    type: String,
+  },
+  // 安装命令
+  installCommand: {
+    type: String,
+  },
+  // 启动命令
+  startCommand: {
+    type: String,
+  },
 });
 
 
