@@ -10,7 +10,10 @@
     "egg": "^2.15.1",
     "egg-scripts": "^2.11.0",
     "egg-socket.io": "^4.1.6",
-    "mongoose": "^6.1.8"
+    "fs-extra": "^10.0.0",
+    "git-clone": "^0.2.0",
+    "mongoose": "^6.1.8",
+    "userhome": "^1.0.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",

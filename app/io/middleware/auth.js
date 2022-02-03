@@ -4,13 +4,13 @@ const REDIS_PREFIX = 'cloudBuild';
 
 module.exports = () => {
   return async (ctx, next) => {
-    console.log('connect');
+    // console.log('connect');
     const { socket, logger, helper, redis } = ctx;
     // 连接的唯一id
     const { id } = socket;
     const query = socket.handshake.query;
     try {
-      logger.info('query', query);
+      // logger.info('query', query);
       socket.emit(id, helper.parseMsg('connect', {
         type: 'connect',
         message: '云构建服务连接成功',
@@ -24,7 +24,7 @@ module.exports = () => {
       }
       hasTask = redis.get(redisKey);
       await next();
-      console.log('disconnect!');
+      // console.log('disconnect!');
     } catch (error) {
       logger.error('build error', error.message);
     }
