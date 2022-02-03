@@ -5,7 +5,7 @@ const CloudBuildTask = require('../../models/cloud-build-task');
 
 const REDIS_PREFIX = 'cloudBuild';
 
-async function createCloudBuildTask(ctx, app) {
+async function createCloudBuildTask(ctx) {
   const { socket, helper, redis } = ctx;
   const client = socket.id;
   const redisKey = `${REDIS_PREFIX}:${client}`;
