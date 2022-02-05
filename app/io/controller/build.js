@@ -24,6 +24,7 @@ module.exports = app => {
         await cloudBuild.putFile();
         await cloudBuild.unzip();
         await cloudBuild.deleleZip();
+        socket.emit('finish');
       } catch (error) {
         const message = typeof error === 'string' ? error : error.message;
         socket.emit(
