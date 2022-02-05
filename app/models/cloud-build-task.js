@@ -25,6 +25,11 @@ const schemaModel = new Schema({
     type: String,
     default: './dist',
   },
+  // 服务器存放目录
+  serverDir: {
+    type: String,
+    required: true,
+  },
   // 安装命令
   installCommand: {
     type: String,

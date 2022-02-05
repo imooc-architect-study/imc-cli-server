@@ -38,6 +38,7 @@ class CloudBuild {
   // 清除任务
   async clearTask() {
     this.redis.remove(this.redisKey);
+    this.cloudBuildTask.clear();
   }
 
   async prepare() {
@@ -95,6 +96,61 @@ class CloudBuild {
         return `构建产物检查失败，失败原因：${result.message}`;
       },
       type: 'uploadPrepare',
+    });
+  }
+
+  async sSHConnect() {
+    await this.callHook('sSHConnect', {
+      startMsg: '开始连接远程服务器',
+      endMsg: '远程服务器连接成功',
+      failedMsg: result => {
+        return `远程服务器连接失败，失败原因：${result.message}`;
+      },
+      type: 'sSHConnect',
+    });
+  }
+
+  async compressFile() {
+    await this.callHook('compressFile', {
+      startMsg: '开始压缩文件',
+      endMsg: '压缩文件成功',
+      failedMsg: result => {
+        return `压缩文件失败，失败原因：${result.message}`;
+      },
+      type: 'compressFile',
+    });
+  }
+
+  async deleteServerFile() {
+    await this.callHook('deleteServerFile', {
+      startMsg: '开始删除服务器文件',
+      endMsg: '删除服务器文件成功',
+      failedMsg: '删除服务器文件失败',
+      type: 'deleteFile',
+    });
+  }
+  async putFile() {
+    await this.callHook('putFile', {
+      startMsg: '开始上传压缩文件',
+      endMsg: '上传压缩文件成功',
+      failedMsg: '上传压缩文件失败',
+      type: 'putFile',
+    });
+  }
+  async unzip() {
+    await this.callHook('unzip', {
+      startMsg: '开始解压文件',
+      endMsg: '解压文件成功',
+      failedMsg: '解压文件失败',
+      type: 'unzip',
+    });
+  }
+  async deleleZip() {
+    await this.callHook('deleleZip', {
+      startMsg: '开始删除压缩文件',
+      endMsg: '删除压缩文件成功',
+      failedMsg: '删除压缩文件失败',
+      type: 'deleleZip',
     });
   }
 
