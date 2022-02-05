@@ -13,6 +13,11 @@ class Redis {
   set(key, value) {
     this._cacheObj[key] = value;
   }
+  remove(key) {
+    if (key in this._cacheObj) {
+      delete this._cacheObj[key];
+    }
+  }
 }
 
 module.exports = { redis: new Redis() };
